@@ -27,7 +27,6 @@ const tabletRoute = require('../routes/tablets');
 const tshirtRoute = require('../routes/tShirts');
 const washingMachineRoute = require('../routes/washingMachine');
 const watchesRoute = require('../routes/watches');
-const cartRoute = require('../routes/cart');
 
 //using the routes
 app.use(cors());
@@ -48,7 +47,6 @@ app.use('/',tabletRoute);
 app.use('/',tshirtRoute);
 app.use('/',washingMachineRoute);
 app.use('/',watchesRoute);
-app.use('/',cartRoute);
 
 // connecting to database 
 mongoose.connect(process.env.MONGODB_URL, { dbName : "E-commerce" });
