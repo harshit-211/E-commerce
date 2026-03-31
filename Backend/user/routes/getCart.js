@@ -6,7 +6,7 @@ const { authMiddleware } = require("../middleware/auth");
 
 const { Cart } = require("../../admin/database/index");
 
-router.post("add/to/cart", authMiddleware, async(req, res) => {
+router.post("/add/to/cart", authMiddleware, async(req, res) => {
     const { productId, productType } = req.body;
     const userId = req.userId;
     let cart = await Cart.findOne({ userId });
