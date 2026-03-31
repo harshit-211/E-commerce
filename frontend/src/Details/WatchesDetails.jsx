@@ -14,7 +14,7 @@ function WatchesDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3001/user/get/watches/${id}`, {
+        fetch(`https://e-commerce-3-zvas.onrender.com/user/get/watches/${id}`, {
             method : "GET",
             headers : { "Content-type" : "application/json" }
         })

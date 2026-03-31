@@ -14,7 +14,7 @@ function Cart() {
     const [loading, setLoading] = useState(true);
 
     const fetchCart = async () => {
-        const res = await fetch("http://localhost:3001/user/get/cart", {
+        const res = await fetch("https://e-commerce-3-zvas.onrender.com/user/get/cart", {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem("Token")}`
             }
@@ -33,7 +33,7 @@ function Cart() {
     }, []);
 
     const increaseQuantity = async (productId) => {
-        await fetch("http://localhost:3001/cart/increase/quantity", {
+        await fetch("https://e-commerce-3-zvas.onrender.com/cart/increase/quantity", {
             method: "PUT",
             headers: {
                 "Content-type": "application/json",
@@ -55,7 +55,7 @@ function Cart() {
     };
 
     const decreaseQuantity = async (productId) => {
-        await fetch("http://localhost:3001/cart/decrease/quantity", {
+        await fetch("https://e-commerce-3-zvas.onrender.com/cart/decrease/quantity", {
             method: "PUT",
             headers: {
                 "Content-type": "application/json",
@@ -77,7 +77,7 @@ function Cart() {
     };
 
     const deleteItem = async (productId) => {
-        await fetch("http://localhost:3001/cart/delete/item", {
+        await fetch("https://e-commerce-3-zvas.onrender.com/cart/delete/item", {
             method: "DELETE",
             headers: {
                 "Content-type": "application/json",

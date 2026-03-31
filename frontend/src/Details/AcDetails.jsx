@@ -14,7 +14,7 @@ function AcDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3001/user/get/ac/${id}`, {
+        fetch(`https://e-commerce-3-zvas.onrender.com/user/get/ac/${id}`, {
             method : "GET",
             headers : { "Content-type" : "application/json" }
         })

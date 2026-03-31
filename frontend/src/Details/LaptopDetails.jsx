@@ -14,7 +14,7 @@ function LaptopDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3001/user/get/laptops/${id}`, {
+        fetch(`https://e-commerce-3-zvas.onrender.com/user/get/laptops/${id}`, {
             method : "GET",
             headers : { "Content-type" : "application/json" }
         })

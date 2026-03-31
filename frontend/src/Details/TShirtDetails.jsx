@@ -14,7 +14,7 @@ function TShirtDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3001/user/get/tshirts/${id}`, {
+        fetch(`https://e-commerce-3-zvas.onrender.com/user/get/tshirts/${id}`, {
             method : "GET",
             headers : { 'Content-type' : 'application/json' }
         })

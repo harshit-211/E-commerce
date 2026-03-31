@@ -14,7 +14,7 @@ function JacketDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3001/user/get/jacket/${id}`, {
+        fetch(`https://e-commerce-3-zvas.onrender.com/user/get/jacket/${id}`, {
             method : "GET",
             headers : { "Content-type" : "application/json" }
         })

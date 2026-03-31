@@ -14,7 +14,7 @@ function EarphoneDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3001/user/get/earphones/${id}`, {
+        fetch(`https://e-commerce-3-zvas.onrender.com/user/get/earphones/${id}`, {
             method : "GET",
             headers : { "Content-type" : "application/json" }
         })

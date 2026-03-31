@@ -20,7 +20,7 @@ function Signin() {
             });
             return ;
         }
-        axios.post("http://localhost:3001/user/signin", { username : email, password : password })
+        axios.post("https://e-commerce-3-zvas.onrender.com/user/signin", { username : email, password : password })
         .then((res) => {
             setIsSubmitted(true);
             toast.success(res.data.message, {

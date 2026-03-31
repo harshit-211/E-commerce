@@ -14,7 +14,7 @@ function WashingMachineDetails() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:3001/user/get/washingMachine/${id}`,{
+        fetch(`https://e-commerce-3-zvas.onrender.com/user/get/washingMachine/${id}`,{
             method : "GET",
             headers : { 'Content-type' : 'application/json' }
         })

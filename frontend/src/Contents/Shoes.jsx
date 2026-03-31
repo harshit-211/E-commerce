@@ -15,7 +15,7 @@ function Shoes({ limit, extraCard, maxPrice, isFilterActive }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch("http://localhost:3001/user/get/shoes", {
+        fetch("https://e-commerce-3-zvas.onrender.com/user/get/shoes", {
             method : "GET",
             headers : { "Content-type" : "application/json" }
         })
@@ -99,7 +99,7 @@ function Shoes({ limit, extraCard, maxPrice, isFilterActive }) {
                         <button 
                           onClick = {(e) => {
                             e.stopPropagation();
-                            fetch("http://localhost:3000/add/to/cart", {
+                            fetch("https://e-commerce-3-zvas.onrender.com/add/to/cart", {
                               method : "POST",
                               headers : {
                                 "Content-type" : "application/json",
