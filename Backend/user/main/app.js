@@ -33,7 +33,7 @@ const userDecreaseRoute = require("../routes/decreaseQuantity");
 const userDeleteItemRoute = require("../routes/deleteItem");
 
 app.use(cors({
-    origin : "https://e-commerce-zi6l.vercel.app"
+    origin : "*"
 }));
 app.use(express.json());
 app.use("/", userSignupRoute);
