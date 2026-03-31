@@ -15,7 +15,7 @@ function Ac({ limit, extraCard, maxPrice, isFilterActive }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("https://e-commerce-3-zvas.onrender.comuser/get/ac", {
+    fetch("https://e-commerce-3-zvas.onrender.comuser/user/get/ac", {
       method: "GET",
       headers: { "Content-type": "application/json" },
     })
