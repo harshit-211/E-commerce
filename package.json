@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node user/main/app.js"
+    "start": "node user/main/app.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
     "jwt-decoder": "^0.0.0",
     "lucide-react": "^0.562.0",
     "mongoose": "^8.13.2",
+    "razorpay": "^2.9.6",
     "react-router-dom": "^7.7.0",
     "vite": "^7.0.5",
     "zod": "^3.23.8"

@@ -96,6 +96,51 @@ function Cart() {
         );
     };
 
+    const handlePayment = async (e) => {
+        e.preventDefault();
+
+        const loadRazorpay = () => {
+            return new Promise((resolve) => {
+                if (window.Razorpay) {
+                    resolve(true);
+                    return;
+                }
+                const script = document.createElement("script");
+                script.src = "https://checkout.razorpay.com/v1/checkout.js";
+                script.async = true;
+
+                script.onload = () => resolve(true);
+                script.onerror = () => resolve(false);
+
+                document.body.appendChild(script);
+            });
+        };
+        const isLoaded = await loadRazorpay();
+        if (!isLoaded) {
+            alert("Razorpay SDK failed to load");
+            return;
+        }
+        const res = await fetch("http://localhost:3001/payment", {
+            method : "POST",
+            headers : {
+                "Content-type" : "application/json",
+                Authorization : `Bearer ${localStorage.getItem("Token")}`
+            }
+        });
+        const order = await res.json();
+        const options = {
+            key : "rzp_test_SZRd5yR5BDwXA8",
+            amount : order.amount,
+            currency : order.currency,
+            name : "E-commerce",
+            description : "bankai",
+            order_id : order.id
+        };
+        console.log(window.Razorpay);
+        const rzp = new window.Razorpay(options);
+        rzp.open();
+    };
+
     const priceWithoutTax = allItems[0]?.items.reduce((acc, product) => {
         const price = parseFloat(product.productId.price.replace(/[^0-9.]/g, ""));
         return acc + product.quantity * price;
@@ -214,7 +259,10 @@ function Cart() {
                                     <span>${totalPrice}</span>
                                 </div>
 
-                                <button className="bg-cyan-400 text-sm mt-4 h-10 w-full rounded-sm flex items-center justify-center gap-2 transition-all duration-200 transform hover:scale-105 hover:bg-cyan-300 hover:shadow-cyan-400/50 hover:shadow-lg hover:cursor-pointer">
+                                <button 
+                                    className="bg-cyan-400 text-sm mt-4 h-10 w-full rounded-sm flex items-center justify-center gap-2 transition-all duration-200 transform hover:scale-105 hover:bg-cyan-300 hover:shadow-cyan-400/50 hover:shadow-lg hover:cursor-pointer"
+                                    onClick = { handlePayment }
+                                >
                                     <CreditCard size={16} />
                                     Proceed to Checkout
                                 </button>
