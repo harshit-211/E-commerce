@@ -120,7 +120,7 @@ function Cart() {
             alert("Razorpay SDK failed to load");
             return;
         }
-        const res = await fetch("http://localhost:3001/payment", {
+        const res = await fetch("https://e-commerce-3-zvas.onrender.com/payment", {
             method : "POST",
             headers : {
                 "Content-type" : "application/json",
