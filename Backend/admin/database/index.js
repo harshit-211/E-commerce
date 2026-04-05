@@ -53,7 +53,7 @@ const laptopSchemas = new mongoose.Schema({
     batteryCapacity : String,
     weight : String,
     operatingSystem : String,
-    price : String,
+    price : Number,
     quantity : Number,
     image : String
 });
@@ -77,7 +77,7 @@ const phoneSchemas = new mongoose.Schema({
     camera : String,
     storage : String,
     operatingSystem : String,
-    price : String,
+    price : Number,
     quantity : String,
     image : String,
 });

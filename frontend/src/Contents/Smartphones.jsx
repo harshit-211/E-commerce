@@ -30,13 +30,13 @@ function Smartphones({ limit, extraCard, maxPrice, isFilterActive }) {
     let phones = [...allPhones];
     if(isFilterActive) {
       phones = phones.filter(item => {
-        const numericPrice = Number(item.price.replace(/[^\d]/g, ""));
+        const numericPrice = item.price;
         return numericPrice <= maxPrice;
       });
     }
     phones.sort((a, b) => {
-      const priceA = Number(a.price.replace(/[^\d]/g, ""));
-      const priceB = Number(b.price.replace(/[^\d]/g, ""));
+      const priceA = a.price;
+      const priceB = b.price;
       return priceA - priceB;
     });
     return limit ? phones.slice(0, limit) : phones;
@@ -96,7 +96,7 @@ function Smartphones({ limit, extraCard, maxPrice, isFilterActive }) {
                       {phone.name} {phone.ram} RAM {phone.storage} Storage{" "}
                       {phone.processor} ...
                     </p>
-                    <p className="mt-2 text-gray-400 text-sm">{phone.price}</p>
+                    <p className="mt-2 text-gray-400 text-sm">₹{phone.price}</p>
                     <div className="flex items-center gap-1 sm:gap-2 mt-3">
                       <Star className="h-4 w-4 text-yellow-300" />
                       <span className="text-xs text-gray-400">4.5</span>

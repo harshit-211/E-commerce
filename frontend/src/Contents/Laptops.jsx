@@ -32,7 +32,7 @@ function Laptops({ limit, extraCard, maxPrice, isFilterActive }) {
     }
     return allLaptops
       .filter(item => {
-        const numericPrice = Number(item.price.replace(/[^\d]/g, ""));
+        const numericPrice = item.price;
         return numericPrice <= maxPrice;
       })
       .slice(0, limit);
@@ -91,7 +91,7 @@ function Laptops({ limit, extraCard, maxPrice, isFilterActive }) {
                     <p className="mt-3 sm:mt-4 text-gray-300 text-sm sm:text-base">
                       {laptop.name} {laptop.processor} {laptop.graphicsCard} ...
                     </p>
-                    <p className="mt-2 text-gray-400 text-sm">{laptop.price}</p>
+                    <p className="mt-2 text-gray-400 text-sm">₹{laptop.price}</p>
                     <div className="flex items-center gap-1 sm:gap-2 mt-3">
                       <Star className="h-4 w-4 text-yellow-300" />
                       <span className="text-xs text-gray-400">4.5</span>

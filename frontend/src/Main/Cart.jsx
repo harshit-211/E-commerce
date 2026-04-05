@@ -141,10 +141,12 @@ function Cart() {
         rzp.open();
     };
 
-    const priceWithoutTax = allItems[0]?.items.reduce((acc, product) => {
-        const price = parseFloat(product.productId.price.replace(/[^0-9.]/g, ""));
-        return acc + product.quantity * price;
-    }, 0) || 0;
+    const priceWithoutTax =
+        allItems.length > 0
+            ? allItems[0].items.reduce((acc, product) => {
+                return acc + product.quantity * product.productId.price;
+            }, 0)
+            : 0;
 
     const gstTax = 0.18 * priceWithoutTax;
     const totalPrice = priceWithoutTax + gstTax;
@@ -192,7 +194,7 @@ function Cart() {
                                                 {product.productId.name}
                                             </div>
                                             <div className="text-gray-400 mt-1">
-                                                {product.productId.price}
+                                                ₹{product.productId.price.toLocaleString("en-In")}
                                             </div>
                                         </div>
 
@@ -244,19 +246,19 @@ function Cart() {
                             <div className="px-5 mt-4">
                                 <div className="flex justify-between text-white">
                                     <span>Subtotal</span>
-                                    <span>${priceWithoutTax}</span>
+                                    <span>₹{priceWithoutTax.toLocaleString("en-In")}</span>
                                 </div>
 
                                 <div className="flex justify-between text-white mt-2">
                                     <span>Tax</span>
-                                    <span>${gstTax}</span>
+                                    <span>₹{gstTax.toLocaleString("en-In")}</span>
                                 </div>
 
                                 <div className="border-t border-gray-600 my-4"></div>
 
                                 <div className="flex justify-between text-cyan-300 font-bold text-lg">
                                     <span>Total</span>
-                                    <span>${totalPrice}</span>
+                                    <span>₹{totalPrice.toLocaleString("en-In")}</span>
                                 </div>
 
                                 <button 
