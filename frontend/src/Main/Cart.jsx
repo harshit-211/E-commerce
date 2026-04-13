@@ -120,21 +120,35 @@ function Cart() {
             alert("Razorpay SDK failed to load");
             return;
         }
-        const res = await fetch("https://e-commerce-3-zvas.onrender.com/payment", {
+        const res = await fetch("http://localhost:3001/payment", {
             method : "POST",
             headers : {
                 "Content-type" : "application/json",
                 Authorization : `Bearer ${localStorage.getItem("Token")}`
             }
         });
-        const order = await res.json();
+        const data = await res.json();
+        console.log("backend response", data);
+        if(!data.order) {
+            alert(data.message || "Order creation failed");
+            return;
+        }
         const options = {
             key : "rzp_test_SZRd5yR5BDwXA8",
-            amount : order.amount,
-            currency : order.currency,
+            amount : data.order.amount,
+            currency : data.order.currency,
             name : "E-commerce",
             description : "bankai",
-            order_id : order.id
+            order_id : data.order.id,
+
+            handler: async function(response) {
+                await fetch("http://localhost:3001/verify/payment", {
+                    method : "POST",
+                    headers : { "Content-type" : "application/json" },
+                    body : JSON.stringify(response)
+                });
+                alert("Payment successfull");
+            }
         };
         console.log(window.Razorpay);
         const rzp = new window.Razorpay(options);

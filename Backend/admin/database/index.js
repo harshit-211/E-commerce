@@ -149,7 +149,7 @@ const acSchemas = new mongoose.Schema({
     ton : String,
     star : String,
     colour : String,
-    price : String,
+    price : Number,
     quantity : Number,
     image : String
 });
@@ -186,6 +186,30 @@ const cartSchemas = new mongoose.Schema({
         }
     ]
 });
+const orderSchemas = new mongoose.Schema({
+    userId : String,
+    items : [
+        {
+            productId : {
+                type : mongoose.Schema.Types.ObjectId,
+                required : true,
+                refPath : "items.productType"
+            },
+            productType : {
+                type : String,
+                required : true
+            },
+            quantity : Number,
+            price : Number
+        }
+    ],
+    totalAmount : Number,
+    razorpayOrderId : String,
+    paymentStatus : {
+        type : String,
+        default : "pending"
+    }
+}, { timestamps : true });
 const Admin = mongoose.model("Admin", adminSchemas); // the string written in double codes will appear in mongodb compass
 const Shirts = mongoose.model("Shirts", shirtSchemas);
 const Jeans = mongoose.model("Jeans", jeanSchemas);
@@ -204,6 +228,7 @@ const Jackets = mongoose.model("Jackets", jacketSchemas);
 const Ac = mongoose.model("Ac", acSchemas);
 const Tablets = mongoose.model("Tablets", tabletSchemas);
 const Cart = mongoose.model("Cart", cartSchemas);
+const Order = mongoose.model("Order", orderSchemas);
 module.exports = {
     Admin,
     Shirts,
@@ -222,5 +247,6 @@ module.exports = {
     Jackets,
     Ac,
     Tablets,
-    Cart
+    Cart,
+    Order
 };
