@@ -120,7 +120,7 @@ function Cart() {
             alert("Razorpay SDK failed to load");
             return;
         }
-        const res = await fetch("http://localhost:3001/payment", {
+        const res = await fetch("https://e-commerce-3-zvas.onrender.com/payment", {
             method : "POST",
             headers : {
                 "Content-type" : "application/json",
@@ -142,11 +142,15 @@ function Cart() {
             order_id : data.order.id,
 
             handler: async function(response) {
-                await fetch("http://localhost:3001/verify/payment", {
+                await fetch("https://e-commerce-3-zvas.onrender.com/verify/payment", {
                     method : "POST",
-                    headers : { "Content-type" : "application/json" },
+                    headers : { 
+                        "Content-type" : "application/json",
+                        Authorization : `Bearer ${localStorage.getItem("Token")}`
+                    },
                     body : JSON.stringify(response)
                 });
+                setAllItems([]);
                 alert("Payment successfull");
             }
         };

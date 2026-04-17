@@ -1,14 +1,10 @@
-const dotenv = require("dotenv");
+
 const Razorpay = require("razorpay");
 const express = require("express");
 
 const { authMiddleware } = require("../middleware/auth");
 const { Cart } = require("../../admin/database/index");
 const { Order } = require("../../admin/database/index");
-
-dotenv.config({
-    path : "../../.env"
-});
 
 const razorpay = new Razorpay({
     key_id : process.env.RAZORPAY_API_KEY,
