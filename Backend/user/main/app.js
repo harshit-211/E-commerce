@@ -33,6 +33,7 @@ const userDecreaseRoute = require("../routes/decreaseQuantity");
 const userDeleteItemRoute = require("../routes/deleteItem");
 const userPaymentRoute = require("../routes/payment");
 const userVerifyPaymentRoute = require("../routes/verifyPayment");
+const userOrders = require("../routes/orders");
 
 app.use(cors({
     origin : "*"
@@ -62,6 +63,7 @@ app.use("/", userDecreaseRoute);
 app.use("/", userDeleteItemRoute);
 app.use("/", userPaymentRoute);
 app.use("/", userVerifyPaymentRoute);
+app.use("/", userOrders);
 
 mongoose.connect(process.env.MONGODB_URL, { dbName : "E-commerce" });
 
