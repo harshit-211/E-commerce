@@ -8,18 +8,19 @@ import { useNavigate } from "react-router-dom";
 
 function Signup() {
     const [ email, setEmail ] = useState("");
+    const [ name, setName ] = useState("");
     const [ password, setPassword ] = useState("");
     const [ isSubmitted, setIsSubmitted ] = useState(false);
     const navigate = useNavigate();
 
     function handleSubmit() {
-        if(!email || !password) {
+        if(!email || !name || !password) {
             toast.error("Please enter the details", {
                 position : "top-center"
             });
             return;
         }
-        axios.post("https://e-commerce-3-zvas.onrender.com/user/signup", { username : email, password : password })
+        axios.post("https://e-commerce-3-zvas.onrender.com/user/signup", { email : email, name : name, password : password })
         .then((res) => {
             setIsSubmitted(true);
             toast.success(res.data.message,{
@@ -89,6 +90,14 @@ function Signup() {
                     placeholder = "Email"
                     value = {email}
                     onChange = {(e) => setEmail(e.target.value)}
+                    disabled = {isSubmitted}
+                />
+                <Input className = "max-w-sm mt-15 h-12 border-gray-700 bg-gray-800 text-white"
+                    type = "text"
+                    id = "name"
+                    placeholder = "Name"
+                    value = {name}
+                    onChange = {(e) => setName(e.target.value)}
                     disabled = {isSubmitted}
                 />
                 <Input className = "max-w-sm mt-15 h-12 border-gray-700 bg-gray-800 text-white"

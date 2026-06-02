@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const adminSchemas = new mongoose.Schema({
-    username : String,
+    email : String,
+    name : String,
     password : String
 });
 const shirtSchemas = new mongoose.Schema({
