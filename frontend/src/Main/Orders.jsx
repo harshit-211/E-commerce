@@ -37,11 +37,17 @@ function Orders() {
     return (
         <div className = "bg-gray-900 min-h-screen p-4 md:p-8">
             <Appbar />
-            <div className = "text-center mt-20">
-                <div className = "text-cyan-300 font-bold text-4xl">
-                    My Orders
+            <motion.div
+                initial = {{ opacity : 0, y : -10 }}
+                animate = {{ opacity : 1, y : 0 }}
+                transition = {{ duration : 0.5 }}
+            >
+                <div className = "text-center mt-20">
+                    <div className = "text-cyan-300 font-bold text-4xl">
+                        My Orders
+                    </div>
                 </div>
-            </div>
+            </motion.div>
 
             <AnimatePresence mode="wait">
                 {isLoading ? (

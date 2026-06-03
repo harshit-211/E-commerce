@@ -21,6 +21,7 @@ import AllWashingMachines from "./Main/AllWashingMachines";
 import AllWatches from "./Main/AllWatches";
 import Cart from "./Main/Cart";
 import Orders from "./Main/Orders";
+import Profile from "./Main/Profile";
 import SmartphonesDetails from "./Details/SmartphonesDetails";
 import LaptopDetails from "./Details/LaptopDetails";
 import AcDetails from "./Details/AcDetails";
@@ -66,6 +67,7 @@ function App() {
             <Route path = "/all/watches" element = {<AllWatches />} />
             <Route path = "/cart" element = {<Cart />} />
             <Route path = "/orders" element = {<Orders />} />
+            <Route path = "/profile" element = {<Profile />} />
             <Route path = "/phone/details/:id" element = {<SmartphonesDetails />} />
             <Route path = "/laptop/details/:id" element = {<LaptopDetails />} />
             <Route path = "/ac/details/:id" element = {<AcDetails />} />
