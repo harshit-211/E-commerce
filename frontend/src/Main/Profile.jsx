@@ -6,7 +6,7 @@ function Profile() {
     const [info, setInfo] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3001/user/info", {
+        fetch("http://e-commerce-3-zvas.onrender.com/user/info", {
             method : "GET",
             headers : {
                 "Content-type" : "application/json",
